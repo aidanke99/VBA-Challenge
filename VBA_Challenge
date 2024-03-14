@@ -11,7 +11,7 @@
   End Sub
   
   Sub Yearly_Change():
-  ' crreate variables for tracking price change, convert price change into a percent
+  ' create variables for tracking price change, convert price change into a percent
   Dim i As Long
   Dim pricechange As Double
   Dim percentchange As Double
