@@ -1,5 +1,7 @@
  Sub Cell():
-  
+ 
+' create headers for each variable on first row of sheet
+
   Cells(1, 9).Value = "ticker"
   Cells(1, 10).Value = "yearly change"
   Cells(1, 11).Value = "percent change"
@@ -9,7 +11,7 @@
   End Sub
   
   Sub Yearly_Change():
-  
+  ' crreate variables for tracking price change, convert price change into a percent
   Dim i As Long
   Dim pricechange As Double
   Dim percentchange As Double
@@ -18,12 +20,12 @@
   j = 0
   
   For i = 2 To Cells(Rows.Count, 1).End(xlUp).Row
-  
+  ' checking if the ticker is changing from one row to the next
     If Cells(i + 1, 1) <> Cells(i, 1) Then
-    
+    ' find closing price to determine price change, and convert to a percentage
     pricechange = Cells(i, 6) - Cells(start, 3)
     percentchange = pricechange / Cells(start, 3)
-    
+    ' move over to J and K column to track changes for all tickers
     Range("J" & 2 + j).Value = pricechange
     Range("K" & 2 + j).Value = percentchange
     
@@ -43,11 +45,12 @@ Dim sum As Double
 Dim sumrow, rowcount As Long
 sumrow = 2
 sum = 0
+' calculate total volume for each ticker, once ticker changes, reset total volume to zero
     For i = 2 To Cells(Rows.Count, 1).End(xlUp).Row
     sum = sum + Cells(i, 7).Value
     
     If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
-    
+    ' move value to new cells in right columns
     Cells(sumrow, 9).Value = Cells(i, 1).Value
     Cells(sumrow, 12).Value = sum
     sumrow = sumrow + 1
@@ -56,7 +59,7 @@ sum = 0
     End If
 
 Next i
-
+' create new headlines, and use shortcuts to find max, min values
 Cells(1, 15).Value = "ticker"
 Cells(1, 16).Value = "value"
 Cells(2, 14).Value = "greatest % increase"
