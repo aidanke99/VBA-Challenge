@@ -1,0 +1,69 @@
+ Sub Cell():
+  
+  Cells(1, 9).Value = "ticker"
+  Cells(1, 10).Value = "yearly change"
+  Cells(1, 11).Value = "percent change"
+  Cells(1, 12).Value = "total volume"
+  
+  
+  End Sub
+  
+  Sub Yearly_Change():
+  
+  Dim i As Long
+  Dim pricechange As Double
+  Dim percentchange As Double
+  Dim start As Long
+  start = 2
+  j = 0
+  
+  For i = 2 To Cells(Rows.Count, 1).End(xlUp).Row
+  
+    If Cells(i + 1, 1) <> Cells(i, 1) Then
+    
+    pricechange = Cells(i, 6) - Cells(start, 3)
+    percentchange = pricechange / Cells(start, 3)
+    
+    Range("J" & 2 + j).Value = pricechange
+    Range("K" & 2 + j).Value = percentchange
+    
+    start = i + 1
+    j = j + 1
+    
+    End If
+
+Next i
+
+  End Sub
+  
+Sub Stocks():
+
+Dim i As Long
+Dim sum As Double
+Dim sumrow, rowcount As Long
+sumrow = 2
+sum = 0
+    For i = 2 To Cells(Rows.Count, 1).End(xlUp).Row
+    sum = sum + Cells(i, 7).Value
+    
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+    
+    Cells(sumrow, 9).Value = Cells(i, 1).Value
+    Cells(sumrow, 12).Value = sum
+    sumrow = sumrow + 1
+    sum = 0
+    
+    End If
+
+Next i
+
+Cells(1, 15).Value = "ticker"
+Cells(1, 16).Value = "value"
+Cells(2, 14).Value = "greatest % increase"
+Cells(3, 14).Value = "greatest % decrease"
+Cells(4, 14).Value = "greatest total volume"
+Cells(2, 16) = "%" & WorksheetFunction.Max(Range("K2:K3001" & rowcount)) * 100
+Cells(3, 16) = "%" & WorksheetFunction.Min(Range("K2:K3001" & rowcount)) * 100
+Cells(4, 16) = WorksheetFunction.Max(Range("L2:L3001" & rowcount)) * 100
+
+End Sub
