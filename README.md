@@ -4,4 +4,4 @@ In this challenge, we will review multiple years of stock performance for multio
 
 Method
 
-to begin the project, I started by determinging 
+to begin the project, I started by creating headers in a separate column, and calulated the yearly change of each ticker, and calculated this change as a percentage.
