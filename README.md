@@ -4,4 +4,4 @@ In this challenge, we will review multiple years of stock performance for multio
 
 Method
 
-to begin the project, I started by creating headers in a separate column, and calulated the yearly change of each ticker, and calculated this change as a percentage.
+to begin the project, I started by creating headers in a separate column, and calulated the yearly change of each ticker, and calculated this change as a percentage. To do this, I needed to know when the ticker symbol changed, so the loop would know when to reset, and move on to the next ticker, and recalculate
