@@ -69,4 +69,6 @@ Cells(2, 16) = "%" & WorksheetFunction.Max(Range("K2:K3001" & rowcount)) * 100
 Cells(3, 16) = "%" & WorksheetFunction.Min(Range("K2:K3001" & rowcount)) * 100
 Cells(4, 16) = WorksheetFunction.Max(Range("L2:L3001" & rowcount)) * 100
 
+
+
 End Sub
